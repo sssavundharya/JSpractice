@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <style>
+/*
+            fieldset{
+                width: 50%;
+            }
+*/
+            h1{
+                color:grey;
+                text-align: center;
+            }
+            .content-center{
+                position: absolute;
+                left: 35%;
+                width: 30%;
+            }
+            
+        </style>
+    </head>
+    <body>
+        
+        <h1><i>Local Storage</i></h1>
+        <div class="content-center">
+            <fieldset>
+                <legend>Insert data</legend>
+                <input type="text" id="key"placeholder="Enter key"><br><br>
+                <input type="text" id="value"placeholder="Enter value"><br><br>
+                <button type="button"id="button">Insert data</button>
+            </fieldset>
+             <fieldset>
+                <legend>LocalStorage</legend>
+                <div class="result"></div>
+            </fieldset>
+        </div>
+        <script>
+            const key=document.getElementById("key");
+            const value=document.getElementById("value");
+           const button=document.getElementById("button");
+           const result=document.querySelector(".result");
+            
+            button.onclick=function(){
+                console.log(key.value);
+                console.log(value.value);
+               if(key && value){
+                   localStorage.setItem(key.value,value.value);
+                   location.reload();
+               }
+            };
+            console.log(localStorage);
+              for(let i=0;i<localStorage.length;i++){
+                const key=localStorage.key(i);
+                const value=localStorage.getItem(key);
+                
+                result.innerHTML+=`${key}:${value}<br/>`
+            }
+            
+        </script>
+    </body>
+</html>
+
